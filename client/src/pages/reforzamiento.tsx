@@ -308,15 +308,16 @@ export function StudentProfile() {
       </Layout.Content>
 
       {/* --- MODAL DE CHAT (MÁS ANCHO Y RESPONSIVO) --- */}
-      <Modal
+            <Modal
         title={null}
         open={isChatOpen}
         onCancel={() => setIsChatOpen(false)}
         footer={null}
-        width="90vw" // Modal responsivo con ancho relativo
-        style={{ top: "40px", maxWidth: "500px" }} // Limite máximo y centrado
+        width="90vw"
+        style={{ top: "40px", maxWidth: "500px" }}
         closable={false}
-        bodyStyle={{ padding: 0, borderRadius: "20px" }}
+        bodyStyle={{ padding: 0, borderRadius: "20px", background: "transparent" }}
+        className="aws-chat-modal"
       >
         <div style={{
           height: '520px',
@@ -328,11 +329,16 @@ export function StudentProfile() {
           overflow: "hidden",
           animation: "scaleIn 0.3s ease-out"
         }}>
-          {/* Encabezado del chat */}
           <div style={{
             background: `linear-gradient(135deg, ${COLORS.deepNavy} 0%, ${COLORS.royalPurple} 100%)`,
-            padding: "24px",
-            textAlign: "center"
+            padding: "24px 0",
+            textAlign: "center",
+            width: "calc(100% + 48px)",
+            marginLeft: "-24px",
+            marginRight: "-24px",
+            boxSizing: "border-box",
+            borderTopLeftRadius: "20px",
+            borderTopRightRadius: "20px"
           }}>
             <Typography.Title
               level={4}
@@ -357,7 +363,6 @@ export function StudentProfile() {
             </Typography.Text>
           </div>
 
-          {/* Cuerpo del chat */}
           <div 
             ref={chatBodyRef}
             style={{ 
@@ -380,7 +385,7 @@ export function StudentProfile() {
                   borderRadius: message.sender === 'user' ? "20px 20px 4px 20px" : "20px 20px 20px 4px",
                   marginLeft: message.sender === 'user' ? "auto" : "0",
                   marginRight: message.sender === 'user' ? "0" : "auto",
-                  maxWidth: "80%", // Asegura que las burbujas sean responsivas
+                  maxWidth: "80%",
                   boxShadow: message.sender === 'user' 
                     ? "0 4px 12px rgba(58, 56, 160, 0.15)" 
                     : "0 4px 12px rgba(0, 0, 0, 0.05)",
@@ -388,7 +393,7 @@ export function StudentProfile() {
                   animationDelay: `${index * 0.05}s`,
                   opacity: 0,
                   animationFillMode: "forwards",
-                  wordBreak: "break-word" // Evita desbordamiento de texto largo
+                  wordBreak: "break-word"
                 }}
               >
                 {message.text}
@@ -424,7 +429,6 @@ export function StudentProfile() {
             )}
           </div>
 
-          {/* Área de entrada de mensajes */}
           <div style={{ 
             padding: "16px 24px", 
             background: COLORS.pureWhite,
@@ -473,16 +477,13 @@ export function StudentProfile() {
         </div>
       </Modal>
 
-      {/* --- ANIMACIONES CSS --- */}
       <style>
         {`
-          /* Animación para materias al hacer hover */
           .subject-hover:hover {
             background: #3B38A033 !important;
             transform: translateX(4px) !important;
           }
           
-          /* Animación para tarjetas */
           .card-hover:hover {
             transform: translateY(-8px);
             box-shadow: 0 16px 32px rgba(58, 56, 160, 0.2) !important;
@@ -498,27 +499,22 @@ export function StudentProfile() {
             background: linear-gradient(90deg, ${COLORS.softPeriwinkle} 0%, ${COLORS.royalPurple} 100%);
           }
           
-          /* Animación para botón flotante */
           .float-button-animation {
             animation: float 3s ease-in-out infinite;
           }
           
-          /* Animación para avatar */
           .avatar-hover:hover {
             transform: scale(1.05);
           }
           
-          /* Animación para input */
           .input-hover:hover {
             box-shadow: 0 0 0 2px ${COLORS.paleLavender};
           }
           
-          /* Animación para botón de enviar */
           .button-hover:hover button {
             transform: scale(1.1);
           }
           
-          /* Puntos de typing */
           .typing-dot {
             display: inline-block;
             width: 6px;
@@ -530,7 +526,6 @@ export function StudentProfile() {
             animation: pulse 1.5s infinite;
           }
           
-          /* Keyframes para animaciones */
           @keyframes float {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-10px); }
@@ -570,7 +565,24 @@ export function StudentProfile() {
             }
           }
 
-          /* Media queries para responsividad */
+          .ant-modal-content {
+            padding: 0 !important;
+            background: transparent !important;
+            border-radius: 20px;
+            overflow: visible;
+            box-shadow: none;
+          }
+
+          .aws-chat-modal .ant-modal-body {
+            padding: 0 !important;
+            background: transparent !important;
+          }
+
+          .input-hover::placeholder {
+            color: #5a5a5a;
+            opacity: 1;
+          }
+          
           @media (max-width: 768px) {
             .ant-modal {
               max-width: 90vw !important;
@@ -579,9 +591,12 @@ export function StudentProfile() {
             .ant-modal-content {
               padding: 0 !important;
             }
+            .ant-modal-body {
+              padding: 0 !important;
+            }
           }
         `}
       </style>
-    </Layout>
-  );
-}
+     </Layout> 
+     ); 
+    }
