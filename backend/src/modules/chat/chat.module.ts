@@ -1,8 +1,7 @@
 import { Module } from '@nestjs/common';
 import { Chat_PORT } from './tokens';
-import { ChatAdapter } from './infrastructure/adapters/chat.adapter';
 
-const implProvider = {
+const chatProvider = {
   provide: Chat_PORT,
   useClass: (() => {
     //const provider = process.env.LLM_PROVIDER?.toLowerCase();
@@ -23,7 +22,9 @@ const implProvider = {
 };
 
 @Module({
-  providers: [implProvider],
+  providers: [
+    chatProvider
+  ],
   exports: [Chat_PORT],
 })
 export class ChatModule {}

@@ -82,7 +82,7 @@ export class ChatAdapter implements ChatPort {
     const res = await this.chat(
       Array.isArray(messages)
         ? messages
-        : [{ role: 'user', content: messages }],
+        : [{ role: 'assistant', content: messages }],
       options,
     );
     onToken?.(res.text);
