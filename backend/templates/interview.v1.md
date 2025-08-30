@@ -9,7 +9,7 @@ Ask the AI to generate an academic interview question about a specific subject.
 * The question must be related to the specified subject.  
 * The response must be **only in JSON format** with the following structure:
 
-```json
+```JSON
 {
   "subject": "<subject name>",
   "interview_question": "<generated question>"

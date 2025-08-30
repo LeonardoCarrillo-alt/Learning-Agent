@@ -62,7 +62,7 @@ Refine the instructions so the AI answers single academic questions with a forma
 
 ## Output format: JSON (DO NOT MODIFY)
 
-```json
+```JSON
 {
   "question": "{{user_question}}",
   "answer": "Here goes the clear and concise (academic) answer.",
