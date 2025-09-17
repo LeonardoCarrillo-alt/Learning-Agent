@@ -110,7 +110,7 @@ export default function OpenQuestion({ onNext }: { onNext: () => void }) {
 
   async function fetchQuestion() {
     try {
-      const response = await apiClient.get("/chatint/question?topico=fisica");
+      const response = await apiClient.get("/chatint/question?courseId=e819dcea-0a15-4132-a0ad-d644b64c5f09&docId=1");
       const { question } = await response.data;
       setMessages((m) => [...m, { sender: 'bot', text: question }]);
     } catch (error) {
