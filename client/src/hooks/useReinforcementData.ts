@@ -10,6 +10,8 @@ interface Message {
 
 interface ChatWithIARequest {
   question: string;
+  studentId: string;
+  docId: string;
 }
 
 export const useChatLogic = () => {
@@ -56,7 +58,7 @@ export const useChatLogic = () => {
     try {
       const response = await apiClient.post(
         "/chat",
-        { question: trimmed } as ChatWithIARequest
+        { question: trimmed, studentId: '11772bed-35f1-4acb-bbf3-2abf79f070c7' , docId:'1' } as ChatWithIARequest
       );
       setMessages(prev => [
         ...prev,

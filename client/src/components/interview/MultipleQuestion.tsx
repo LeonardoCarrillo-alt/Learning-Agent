@@ -43,7 +43,7 @@ export default function MultipleQuestion({ onNext }: MultipleQuestionProps) {
 
   async function fetchQuestion() {
     try {
-      const response = await apiClient.get("/chatint/doubleOption?topico=programacion");
+      const response = await apiClient.get("/chatint/doubleOption?courseId=e819dcea-0a15-4132-a0ad-d644b64c5f09&docId=1");
       const obj = response.data as DoubleOptionResponse;
       setDoubleOption(obj);
     } catch (error) {

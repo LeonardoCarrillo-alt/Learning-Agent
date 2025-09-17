@@ -35,7 +35,7 @@ export default function TeoricQuestion({ onNext }: TeoricQuestionProps) {
 
   async function fetchQuestion() {
     try {
-      const response = await apiClient.get("/chatint/multipleSelection?topico=fisica");
+      const response = await apiClient.get("/chatint/multipleSelection?courseId=e819dcea-0a15-4132-a0ad-d644b64c5f09&docId=1");
       const obj = response.data as MultipleSelectionResponse;
       setMulOption(obj);
     } catch (error) {
